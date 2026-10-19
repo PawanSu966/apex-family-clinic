@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ÉLIXIR | Luxury Salon & Spa</title>
+    <meta name="description" content="Experience high-end couture hair, rejuvenation spa therapies, and bridal masterstyling at Élixir Luxury Salon.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: {
+                            100: '#FAF4E6',
+                            200: '#F2E4C2',
+                            300: '#E7CE93',
+                            400: '#DAB868',
+                            500: '#C5A048', // Primary Luxury Gold
+                            600: '#A48232',
+                            700: '#7E6322',
+                        },
+                        dark: {
+                            900: '#0B0B0D',
+                            800: '#141418',
+                            700: '#1C1C22',
+                            600: '#2A2A33',
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Cormorant Garamond"', 'serif'],
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #FFF0D0 0%, #DAB868 50%, #9C792B 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .gold-border {
+            border: 1px solid rgba(218, 184, 104, 0.25);
+        }
+        .gold-border-glow:hover {
+            border-color: rgba(218, 184, 104, 0.7);
+            box-shadow: 0 0 25px rgba(197, 160, 72, 0.15);
+        }
+        .glass-panel {
+            background: rgba(20, 20, 24, 0.75);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+        }
+    </style>
+</head>
+<body class="bg-dark-900 text-stone-300 font-sans antialiased selection:bg-gold-500 selection:text-dark-900">
+
+    <!-- TOP ANNOUNCEMENT BANNER -->
+    <div class="bg-gradient-to-r from-dark-900 via-gold-700/30 to-dark-900 border-b border-gold-500/20 py-2 px-4 text-center text-xs tracking-widest text-gold-300 uppercase">
+        ✨ Complimentary Signature Scalp Detox on all bookings this week &bull; VIP Concierge Available
+    </div>
+
+    <!-- NAVIGATION -->
+    <nav class="sticky top-0 z-40 glass-panel border-b border-white/5 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="#" class="flex flex-col">
+                <span class="font-serif text-2xl tracking-[0.25em] text-white font-bold">É L I X I R</span>
+                <span class="text-[9px] uppercase tracking-[0.35em] text-gold-400">Haute Coiffure & Spa</span>
+            </a>
+
+            <!-- Desktop Links -->
+            <div class="hidden md:flex items-center space-x-8 text-xs uppercase tracking-widest font-medium">
+                <a href="#experience" class="text-stone-300 hover:text-gold-400 transition-colors">Experience</a>
+                <a href="#services" class="text-stone-300 hover:text-gold-400 transition-colors">Services & Menu</a>
+                <a href="#gallery" class="text-stone-300 hover:text-gold-400 transition-colors">Lookbook</a>
+                <a href="#reviews" class="text-stone-300 hover:text-gold-400 transition-colors">Testimonials</a>
+            </div>
+
+            <!-- WhatsApp Action Button -->
+            <div class="flex items-center space-x-4">
+                <button onclick="openBookingModal()" class="group relative inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-gold-500 to-gold-600 text-dark-900 font-semibold text-xs tracking-wider uppercase hover:shadow-[0_0_20px_rgba(197,160,72,0.4)] transition-all duration-300">
+                    <i data-lucide="calendar" class="w-4 h-4"></i>
+                    <span>Reserve Slot</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header class="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
+        <!-- Background Imagery & Overlay -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=2000&q=80" 
+                 alt="Luxury Salon Ambiance" 
+                 class="w-full h-full object-cover object-center filter brightness-[0.38] contrast-105 scale-105 animate-pulse-slow">
+            <div class="absolute inset-0 bg-gradient-to-t from-dark-900 via-dark-900/60 to-transparent"></div>
+        </div>
+
+        <div class="relative z-10 max-w-4xl mx-auto px-6 text-center py-20">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-gold-500/30 bg-gold-500/10 text-gold-300 text-xs tracking-widest uppercase mb-6">
+                <i data-lucide="sparkles" class="w-3.5 h-3.5 text-gold-400"></i>
+                Private Bespoke Styling Studio
+            </div>
+            
+            <h1 class="font-serif text-5xl sm:text-7xl lg:text-8xl font-normal tracking-tight text-white mb-6 leading-[1.08]">
+                Where Artistry Meets <br>
+                <span class="italic font-light gold-gradient-text">Pure Indulgence</span>
+            </h1>
+
+            <p class="text-stone-400 text-base sm:text-lg max-w-2xl mx-auto font-light leading-relaxed mb-10">
+                Immerse yourself in bespoke hair couture, restorative clinical skincare, and therapeutic botanical spa rituals crafted exclusively for the discerning individual.
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <button onclick="openBookingModal()" class="w-full sm:w-auto px-8 py-4 rounded-full bg-gradient-to-r from-gold-400 via-gold-500 to-gold-600 text-dark-900 font-bold text-xs uppercase tracking-[0.2em] shadow-lg hover:shadow-gold-500/25 hover:scale-[1.02] transition-all">
+                    Book On WhatsApp
+                </button>
+                <a href="#services" class="w-full sm:w-auto px-8 py-4 rounded-full border border-stone-700 hover:border-gold-400 text-white font-medium text-xs uppercase tracking-[0.2em] transition-all">
+                    Explore Price Menu
+                </a>
+            </div>
+
+            <!-- Trust Bar / Key Highlights -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 mt-16 pt-10 border-t border-white/10 text-left">
+                <div>
+                    <p class="font-serif text-3xl font-bold text-white">4.9 ★</p>
+                    <p class="text-xs text-stone-400 tracking-wider uppercase mt-1">1,200+ Google Reviews</p>
+                </div>
+                <div>
+                    <p class="font-serif text-3xl font-bold text-white">100%</p>
+                    <p class="text-xs text-stone-400 tracking-wider uppercase mt-1">Cruelty-Free Botanicals</p>
+                </div>
+                <div>
+                    <p class="font-serif text-3xl font-bold text-white">12+</p>
+                    <p class="text-xs text-stone-400 tracking-wider uppercase mt-1">Master Stylists</p>
+                </div>
+                <div>
+                    <p class="font-serif text-3xl font-bold text-white">VIP</p>
+                    <p class="text-xs text-stone-400 tracking-wider uppercase mt-1">Private Styling Suites</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- THE EXPERIENCE SECTION -->
+    <section id="experience" class="py-24 px-6 border-t border-white/5 bg-dark-800/50">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="relative">
+                    <div class="relative z-10 rounded-2xl overflow-hidden gold-border shadow-2xl">
+                        <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=1200&q=80" 
+                             alt="Stylist at work" 
+                             class="w-full h-[520px] object-cover filter brightness-90 hover:scale-105 transition-transform duration-700">
+                    </div>
+                    <!-- Accent floating badge -->
+                    <div class="absolute -bottom-6 -right-6 z-20 glass-panel p-6 rounded-xl gold-border shadow-xl hidden sm:block max-w-xs">
+                        <div class="flex items-center gap-3 text-gold-400 mb-2">
+                            <i data-lucide="crown" class="w-6 h-6"></i>
+                            <span class="text-xs uppercase tracking-widest font-bold">Unrivaled Excellence</span>
+                        </div>
+                        <p class="text-xs text-stone-300">Each appointment includes a private consultation with our Creative Director.</p>
+                    </div>
+                </div>
+
+                <div>
+                    <span class="text-gold-400 text-xs uppercase tracking-[0.3em] font-semibold">The Élixir Distinction</span>
+                    <h2 class="font-serif text-4xl sm:text-5xl text-white font-normal mt-3 mb-6 leading-tight">
+                        Crafted for Those Who Refuse to Compromise on Beauty.
+                    </h2>
+                    <p class="text-stone-400 leading-relaxed mb-6 font-light">
+                        Step out of the city's frantic pace into a sanctuary of calm. From custom French balayage to Japanese scalp restoration spas, our artisans blend timeless European technique with modern clean formulations.
+                    </p>
+
+                    <div class="space-y-4 my-8">
+                        <div class="flex items-start gap-4">
+                            <div class="w-9 h-9 rounded-full bg-gold-500/10 border border-gold-500/30 flex items-center justify-center text-gold-400 shrink-0">
+                                <i data-lucide="shield-check" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white text-sm font-semibold tracking-wide">Hospital-Grade Sterilization</h4>
+                                <p class="text-stone-400 text-xs mt-1">Single-use organic linen, ultrasonic tool sanitization, and isolated private pods.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-9 h-9 rounded-full bg-gold-500/10 border border-gold-500/30 flex items-center justify-center text-gold-400 shrink-0">
+                                <i data-lucide="award" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white text-sm font-semibold tracking-wide">Global Tier-1 Stylists</h4>
+                                <p class="text-stone-400 text-xs mt-1">Trained across London, Milan and Seoul styling institutes.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-9 h-9 rounded-full bg-gold-500/10 border border-gold-500/30 flex items-center justify-center text-gold-400 shrink-0">
+                                <i data-lucide="coffee" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white text-sm font-semibold tracking-wide">Artisan Lounge & Refreshments</h4>
+                                <p class="text-stone-400 text-xs mt-1">Enjoy single-origin espresso or organic herbal tisanes during your treatments.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button onclick="openBookingModal()" class="inline-flex items-center gap-3 text-gold-400 hover:text-gold-300 font-semibold text-xs tracking-[0.2em] uppercase group">
+                        <span>Book an introductory consultation</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES & PRICING MENU -->
+    <section id="services" class="py-24 px-6 max-w-7xl mx-auto">
+        <div class="text-center max-w-2xl mx-auto mb-16">
+            <span class="text-gold-400 text-xs uppercase tracking-[0.3em] font-semibold">Curated Offerings</span>
+            <h2 class="font-serif text-4xl sm:text-5xl text-white font-normal mt-2 mb-4">The Treatment Menu</h2>
+            <p class="text-stone-400 text-sm font-light">Transparent pricing. No hidden fees. Every service includes consultation & styling finish.</p>
+
+            <!-- Category Filter Buttons -->
+            <div class="flex flex-wrap justify-center gap-2 mt-8 p-1.5 rounded-full glass-panel border border-white/5 max-w-md mx-auto">
+                <button onclick="filterCategory('hair')" class="category-btn active px-4 py-2 rounded-full text-xs font-semibold tracking-wider transition-all bg-gold-500 text-dark-900" data-cat="hair">
+                    HAIR & COLOR
+                </button>
+                <button onclick="filterCategory('spa')" class="category-btn px-4 py-2 rounded-full text-xs font-semibold tracking-wider transition-all text-stone-400 hover:text-white" data-cat="spa">
+                    SKIN & SPA
+                </button>
+                <button onclick="filterCategory('bridal')" class="category-btn px-4 py-2 rounded-full text-xs font-semibold tracking-wider transition-all text-stone-400 hover:text-white" data-cat="bridal">
+                    BRIDAL & VIP
+                </button>
+            </div>
+        </div>
+
+        <!-- Service Cards Grid -->
+        <div id="service-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+            <!-- Item 1 -->
+            <div class="service-item hair bg-dark-800 p-8 rounded-2xl gold-border gold-border-glow transition-all duration-300 flex flex-col justify-between">
+                <div>
+                    <div class="flex justify-between items-start mb-3">
+                        <h3 class="font-serif text-2xl text-white">Couture Cut & Blowout</h3>
+                        <span class="text-gold-400 font-serif text-2xl font-bold">₹2,499</span>
+                    </div>
+                    <p class="text-xs text-stone-400 leading-relaxed mb-6">
+                        Custom face-framing precision architecture, detox wash, conditioning ritual, and red-carpet blowout.
+                    </p>
+                </div>
+                <div class="pt-4 border-t border-white/5 flex items-center justify-between">
+                    <span class="text-[11px] text-stone-500 uppercase tracking-widest flex items-center gap-1.5">
+                        <i data-lucide="clock" class="w-3.5 h-3.5"></i> 60 Mins
+                    </span>
+                    <button onclick="quickBook('Couture Cut & Blowout', '₹2,499')" class="text-xs uppercase tracking-widest font-semibold text-gold-400 hover:text-gold-300">
+                        Book Now →
+                    </button>
+                </div>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="service-item hair bg-dark-800 p-8 rounded-2xl gold-border gold-border-glow transition-all duration-300 flex flex-col justify-between">
+                <div>
+                    <div class="flex justify-between items-start mb-3">
+                        <h3 class="font-serif text-2xl text-white">French Balayage & Gloss</h3>
+                        <span class="text-gold-400 font-serif text-2xl font-bold">₹7,999</span>
+                    </div>
+                    <p class="text-xs text-stone-400 leading-relaxed mb-6">
+                        Hand-painted dimensional contouring with ammonia-free Italian lightener and high-shine acid toner.
+                    </p>
+                </div>
+                <div class="pt-4 border-t border-white/5 flex items-center justify-between">
+                    <span class="text-[11px] text-stone-500 uppercase tracking-widest flex items-center gap-1.5">
+                        <i data-lucide="clock" class="w-3.5 h-3.5"></i> 180 Mins
+                    </span>
+                    <button onclick="quickBook('French Balayage & Gloss', '₹7,999')" class="text-xs uppercase tracking-widest font-semibold text-gold-400 hover:text-gold-300">
+                        Book Now →
+                    </button>
+                </div>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="service-item hair bg-dark-800 p-8 rounded-2xl gold-border gold-border-glow transition-all duration-300 flex flex-col justify-between">
+                <div>
+                    <div class="flex justify-between items-start mb-3">
+                        <h3 class="font-serif text-2xl text-white">Japanese Scalp Head Spa</h3>
+                        <span class="text-gold-400 font-serif text-2xl font-bold">₹3,499</span>
+                    </div>
+                    <p class="text-xs text-stone-400 leading-relaxed mb-6">
+                        Micro-mist steaming, volcanic clay scrub, waterfall cascade therapy, and neck tension decompression.
+                    </p>
+                </div>
+                <div class="pt-4 border-t border-white/5 flex items-center justify-between">
+                    <span class="text-[11px] text-stone-500 uppercase tracking-widest flex items-center gap-1.5">
+                        <i data-lucide="clock" class="w-3.5 h-3.5"></i> 75 Mins
+                    </span>
+                    <button onclick="quickBook('Japanese Scalp Head Spa', '₹3,499')" class="text-xs uppercase tracking-widest font-semibold text-gold-400 hover:text-gold-300">
+                        Book Now →
+                    </button>
+                </div>
+            </div>
+
+            <!-- Item 4 (Spa) -->
+            <div class="service-item spa bg-dark-800 p-8 rounded-2xl gold-border gold-border-glow transition-all duration-300 flex flex-col justify-between">
+                <div>
+                    <div class="flex justify-between items-start mb-3">
+                        <h3 class="font-serif text-2xl text-white">24K Gold Cellular Facial</h3>
+                        <span class="text-gold-400 font-serif text-2xl font-bold">₹4,999</span>
+                    </div>
+                    <p class="text-xs text-stone-400 leading-relaxed mb-6">
+                        Pure gold leaf infusion, lymphatic drainage massage, and hyaluronic deep dermal oxygenation.
+                    </p>
+                </div>
+                <div class="pt-4 border-t border-white/5 flex items-center justify-between">
+                    <span class="text-[11px] text-stone-500 uppercase tracking-widest flex items-center gap-1.5">
+                        <i data-lucide="clock" class="w-3.5 h-3.5"></i> 90 Mins
+                    </span>
+                    <button onclick="quickBook('24K Gold Cellular Facial', '₹4,999')" class="text-xs uppercase tracking-widest font-semibold text-gold-400 hover:text-gold-300">
+                        Book Now →
+                    </button>
+                </div>
+            </div>
+
+            <!-- Item 5 (Spa) -->
+            <div class="service-item spa bg-dark-800 p-8 rounded-2xl gold-border gold-border-glow transition-all duration-300 flex flex-col justify-between">
+                <div>
+                    <div class="flex justify-between items-start mb-3">
+                        <h3 class="font-serif text-2xl text-white">Aromatherapy Body Ritual</h3>
+                        <span class="text-gold-400 font-serif text-2xl font-bold">₹4,200</span>
+                    </div>
+                    <p class="text-xs text-stone-400 leading-relaxed mb-6">
+                        Warm cold-pressed sandalwood elixir, acupressure body release, and herbal detox steam bath.
+                    </p>
+                </div>
+                <div class="pt-4 border-t border-white/5 flex items-center justify-between">
+                    <span class="text-[11px] text-stone-500 uppercase tracking-widest flex items-center gap-1.5">
+                        <i data-lucide="clock" class="w-3.5 h-3.5"></i> 90 Mins
+                    </span>
+                    <button onclick="quickBook('Aromatherapy Body Ritual', '₹4,200')" class="text-xs uppercase tracking-widest font-semibold text-gold-400 hover:text-gold-300">
+                        Book Now →
+                    </button>
+                </div>
+            </div>
+
+            <!-- Item 6 (Bridal) -->
+            <div class="service-item bridal bg-dark-800 p-8 rounded-2xl gold-border gold-border-glow transition-all duration-300 flex flex-col justify-between">
+                <div>
+                    <div class="flex justify-between items-start mb-3">
+                        <h3 class="font-serif text-2xl text-white">Signature Bridal Master Suite</h3>
+                        <span class="text-gold-400 font-serif text-2xl font-bold">₹24,999</span>
+                    </div>
+                    <p class="text-xs text-stone-400 leading-relaxed mb-6">
+                        Complete bridal glam, HD airbrush makeup, couture hair updo, jewelry setting & private dressing butler.
+                    </p>
+                </div>
+                <div class="pt-4 border-t border-white/5 flex items-center justify-between">
+                    <span class="text-[11px] text-stone-500 uppercase tracking-widest flex items-center gap-1.5">
+                        <i data-lucide="clock" class="w-3.5 h-3.5"></i> 240 Mins
+                    </span>
+                    <button onclick="quickBook('Signature Bridal Master Suite', '₹24,999')" class="text-xs uppercase tracking-widest font-semibold text-gold-400 hover:text-gold-300">
+                        Book Now →
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- LOOKBOOK / GALLERY -->
+    <section id="gallery" class="py-24 px-6 bg-dark-800/40 border-t border-white/5">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+                <div>
+                    <span class="text-gold-400 text-xs uppercase tracking-[0.3em] font-semibold">Portfolio & Aesthetics</span>
+                    <h2 class="font-serif text-4xl sm:text-5xl text-white font-normal mt-2">The Élixir Lookbook</h2>
+                </div>
+                <p class="text-stone-400 text-xs uppercase tracking-widest mt-4 md:mt-0">
+                    Follow on Instagram <span class="text-gold-400">@elixir.luxesalon</span>
+                </p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="group relative overflow-hidden rounded-xl h-72">
+                    <img src="https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?auto=format&fit=crop&w=800&q=80" 
+                         alt="Balayage Styling" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-dark-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-4 flex items-end">
+                        <span class="text-white text-xs font-medium">Ash Honey Balayage</span>
+                    </div>
+                </div>
+                <div class="group relative overflow-hidden rounded-xl h-72">
+                    <img src="https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?auto=format&fit=crop&w=800&q=80" 
+                         alt="Salon Interior" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-dark-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-4 flex items-end">
+                        <span class="text-white text-xs font-medium">Private VIP Suite</span>
+                    </div>
+                </div>
+                <div class="group relative overflow-hidden rounded-xl h-72">
+                    <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=800&q=80" 
+                         alt="Bridal Makeup" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-dark-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-4 flex items-end">
+                        <span class="text-white text-xs font-medium">Royalty Bridal Glam</span>
+                    </div>
+                </div>
+                <div class="group relative overflow-hidden rounded-xl h-72">
+                    <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80" 
+                         alt="Spa Wellness" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-dark-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-4 flex items-end">
+                        <span class="text-white text-xs font-medium">Ayurvedic Rejuvenation</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS SECTION -->
+    <section id="reviews" class="py-24 px-6 max-w-7xl mx-auto">
+        <div class="text-center max-w-xl mx-auto mb-16">
+            <span class="text-gold-400 text-xs uppercase tracking-[0.3em] font-semibold">Guest Experiences</span>
+            <h2 class="font-serif text-4xl sm:text-5xl text-white font-normal mt-2">Words of Praise</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="bg-dark-800 p-8 rounded-2xl border border-white/5">
+                <div class="flex text-gold-400 gap-1 mb-4">
+                    <i data-lucide="star" class="w-4 h-4 fill-gold-400"></i>
+                    <i data-lucide="star" class="w-4 h-4 fill-gold-400"></i>
+                    <i data-lucide="star" class="w-4 h-4 fill-gold-400"></i>
+                    <i data-lucide="star" class="w-4 h-4 fill-gold-400"></i>
+                    <i data-lucide="star" class="w-4 h-4 fill-gold-400"></i>
+                </div>
+                <p class="text-stone-300 text-sm leading-relaxed mb-6 italic">
+                    "The head spa was beyond anything I've experienced in Mumbai or London. The privacy, attentiveness, and aromatic tea made it completely magical."
+                </p>
+                <div>
+                    <h5 class="text-white font-medium text-sm">Natasha Singhania</h5>
+                    <p class="text-[11px] text-stone-500 uppercase tracking-widest mt-0.5">Fashion Director</p>
+                </div>
+            </div>
+
+            <div class="bg-dark-800 p-8 rounded-2xl border border-white/5">
+                <div class="flex text-gold-400 gap-1 mb-4">
+                    <i data-lucide="star" class="w-4 h-4 fill-gold-400"></i>
+                    <i data-lucide="star" class="w-4 h-4 fill-gold-400"></i>
+                    <i data-lucide="star" class="w-4 h-4 fill-gold-400"></i>
+                    <i data-lucide="star" class="w-4 h-4 fill-gold-400"></i>
+                    <i data-lucide="star" class="w-4 h-4 fill-gold-400"></i>
+                </div>
+                <p class="text-stone-300 text-sm leading-relaxed mb-6 italic">
+                    "I trusted them with my wedding hair and makeup. Their bridal master suite was heaven. No stress, just perfection and compliments all evening!"
+                </p>
+                <div>
+                    <h5 class="text-white font-medium text-sm">Dr. Rhea Malhotra</h5>
+                    <p class="text-[11px] text-stone-500 uppercase tracking-widest mt-0.5">Dermatologist</p>
+                </div>
+            </div>
+
+            <div class="bg-dark-800 p-8 rounded-2xl border border-white/5">
+                <div class="flex text-gold-400 gap-1 mb-4">
+                    <i data-lucide="star" class="w-4 h-4 fill-gold-400"></i>
+                    <i data-lucide="star" class="w-4 h-4 fill-gold-400"></i>
+                    <i data-lucide="star" class="w-4 h-4 fill-gold-400"></i>
+                    <i data-lucide="star" class="w-4 h-4 fill-gold-400"></i>
+                    <i data-lucide="star" class="w-4 h-4 fill-gold-400"></i>
+                </div>
+                <p class="text-stone-300 text-sm leading-relaxed mb-6 italic">
+                    "Finally a salon that values your time. Booking via WhatsApp is seamless, zero waiting time, and world-class stylists who actually listen."
+                </p>
+                <div>
+                    <h5 class="text-white font-medium text-sm">Vikramaditya Oberoi</h5>
+                    <p class="text-[11px] text-stone-500 uppercase tracking-widest mt-0.5">Creative Consultant</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LOCATION & VIP CONCIERGE -->
+    <section class="py-20 px-6 bg-dark-800/80 border-t border-white/5">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+            <div>
+                <span class="text-gold-400 text-xs uppercase tracking-widest font-semibold flex items-center justify-center md:justify-start gap-2 mb-3">
+                    <i data-lucide="map-pin" class="w-4 h-4"></i> The Atelier Location
+                </span>
+                <p class="text-white text-base font-serif">402, High Street Galleria</p>
+                <p class="text-stone-400 text-xs mt-1">Near Palladium, Luxury Wing, Level 4</p>
+                <p class="text-stone-500 text-xs mt-1">Valet Parking Available at Entrance 2</p>
+            </div>
+
+            <div>
+                <span class="text-gold-400 text-xs uppercase tracking-widest font-semibold flex items-center justify-center md:justify-start gap-2 mb-3">
+                    <i data-lucide="clock" class="w-4 h-4"></i> Atelier Hours
+                </span>
+                <p class="text-white text-sm">Tuesday &ndash; Sunday: 10:00 AM &ndash; 09:00 PM</p>
+                <p class="text-stone-400 text-xs mt-1">Monday: Exclusive VIP Private Bookings Only</p>
+            </div>
+
+            <div>
+                <span class="text-gold-400 text-xs uppercase tracking-widest font-semibold flex items-center justify-center md:justify-start gap-2 mb-3">
+                    <i data-lucide="phone-call" class="w-4 h-4"></i> Direct Concierge
+                </span>
+                <p class="text-white text-sm font-semibold">+91 98765 43210 (Direct WhatsApp)</p>
+                <p class="text-stone-400 text-xs mt-1">concierge@elixirsalon.in</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-8 px-6 border-t border-white/5 text-center text-xs text-stone-500">
+        <p>&copy; 2026 ÉLIXIR Haute Coiffure & Spa. All rights reserved.</p>
+        <p class="mt-2 text-[10px] text-stone-600">Website crafted with precision &bull; Demo sample for preview</p>
+    </footer>
+
+    <!-- FLOATING WHATSAPP BUTTON (Always visible on mobile & desktop) -->
+    <div class="fixed bottom-6 right-6 z-40">
+        <button onclick="openBookingModal()" class="flex items-center gap-3 bg-[#25D366] hover:bg-[#20bd5a] text-white px-5 py-3.5 rounded-full shadow-[0_4px_25px_rgba(37,211,102,0.4)] hover:scale-105 transition-all">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.173.086.275.071.376-.043.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564c.173.087.289.129.332.202.043.073.043.419-.101.824z"/>
+            </svg>
+            <span class="font-bold text-xs uppercase tracking-wider">Book via WhatsApp</span>
+        </button>
+    </div>
+
+    <!-- WHATSAPP BOOKING MODAL -->
+    <div id="booking-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md hidden opacity-0 transition-opacity duration-300">
+        <div class="bg-dark-800 gold-border rounded-3xl p-8 max-w-md w-full relative shadow-2xl">
+            <!-- Close Button -->
+            <button onclick="closeBookingModal()" class="absolute top-5 right-5 text-stone-400 hover:text-white p-2">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+
+            <div class="text-center mb-6">
+                <span class="text-gold-400 text-[10px] uppercase tracking-[0.25em] font-semibold">Priority Concierge</span>
+                <h3 class="font-serif text-2xl text-white mt-1">Book Your Appointment</h3>
+                <p class="text-stone-400 text-xs mt-1">Select your service & send directly to salon WhatsApp.</p>
+            </div>
+
+            <form id="booking-form" onsubmit="handleFormSubmit(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs uppercase tracking-wider text-stone-300 mb-1.5 font-medium">Your Name</label>
+                    <input type="text" id="cust-name" required placeholder="e.g. Priya Sharma" 
+                           class="w-full bg-dark-900 border border-stone-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-gold-500">
+                </div>
+
+                <div>
+                    <label class="block text-xs uppercase tracking-wider text-stone-300 mb-1.5 font-medium">Preferred Service</label>
+                    <select id="cust-service" required class="w-full bg-dark-900 border border-stone-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-gold-500">
+                        <option value="Couture Cut & Blowout (₹2,499)">Couture Cut & Blowout — ₹2,499</option>
+                        <option value="French Balayage & Gloss (₹7,999)">French Balayage & Gloss — ₹7,999</option>
+                        <option value="Japanese Scalp Head Spa (₹3,499)">Japanese Scalp Head Spa — ₹3,499</option>
+                        <option value="24K Gold Cellular Facial (₹4,999)">24K Gold Cellular Facial — ₹4,999</option>
+                        <option value="Aromatherapy Body Ritual (₹4,200)">Aromatherapy Body Ritual — ₹4,200</option>
+                        <option value="Signature Bridal Master Suite (₹24,999)">Signature Bridal Master Suite — ₹24,999</option>
+                        <option value="Other / Consultation">Other / General Consultation</option>
+                    </select>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs uppercase tracking-wider text-stone-300 mb-1.5 font-medium">Date</label>
+                        <input type="date" id="cust-date" required 
+                               class="w-full bg-dark-900 border border-stone-700 rounded-xl px-3 py-3 text-xs text-white focus:outline-none focus:border-gold-500">
+                    </div>
+                    <div>
+                        <label class="block text-xs uppercase tracking-wider text-stone-300 mb-1.5 font-medium">Time Slot</label>
+                        <select id="cust-time" required class="w-full bg-dark-900 border border-stone-700 rounded-xl px-3 py-3 text-xs text-white focus:outline-none focus:border-gold-500">
+                            <option value="Morning (10:00 AM - 01:00 PM)">Morning (10 AM - 1 PM)</option>
+                            <option value="Afternoon (01:00 PM - 04:00 PM)">Afternoon (1 PM - 4 PM)</option>
+                            <option value="Evening (04:00 PM - 08:00 PM)">Evening (4 PM - 8 PM)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button type="submit" class="w-full mt-4 bg-gradient-to-r from-gold-500 to-gold-600 text-dark-900 font-bold py-3.5 rounded-xl uppercase tracking-widest text-xs flex items-center justify-center gap-2 hover:shadow-[0_0_20px_rgba(197,160,72,0.4)] transition-all">
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                        <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.173.086.275.071.376-.043.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564c.173.087.289.129.332.202.043.073.043.419-.101.824z"/>
+                    </svg>
+                    <span>Proceed on WhatsApp</span>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // Initialize Icons
+        lucide.createIcons();
+
+        // Default WhatsApp Number for the Demo (Can be replaced with client's number)
+        const SALON_WHATSAPP_NUMBER = "919876543210"; 
+
+        // Filter Services by Category
+        function filterCategory(cat) {
+            const buttons = document.querySelectorAll('.category-btn');
+            buttons.forEach(b => {
+                b.classList.remove('bg-gold-500', 'text-dark-900');
+                b.classList.add('text-stone-400');
+                if (b.getAttribute('data-cat') === cat) {
+                    b.classList.add('bg-gold-500', 'text-dark-900');
+                    b.classList.remove('text-stone-400');
+                }
+            });
+
+            const items = document.querySelectorAll('.service-item');
+            items.forEach(item => {
+                if (cat === 'all' || item.classList.contains(cat)) {
+                    item.style.display = 'flex';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // Modal Handlers
+        const modal = document.getElementById('booking-modal');
+        function openBookingModal() {
+            modal.classList.remove('hidden');
+            setTimeout(() => modal.classList.remove('opacity-0'), 10);
+            
+            // Default date to tomorrow
+            const tomorrow = new Date();
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            document.getElementById('cust-date').value = tomorrow.toISOString().split('T')[0];
+        }
+
+        function closeBookingModal() {
+            modal.classList.add('opacity-0');
+            setTimeout(() => modal.classList.add('hidden'), 300);
+        }
+
+        function quickBook(serviceName, price) {
+            openBookingModal();
+            const select = document.getElementById('cust-service');
+            for (let i = 0; i < select.options.length; i++) {
+                if (select.options[i].text.includes(serviceName)) {
+                    select.selectedIndex = i;
+                    break;
+                }
+            }
+        }
+
+        // Form Submit -> WhatsApp Redirect
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            const name = document.getElementById('cust-name').value.trim();
+            const service = document.getElementById('cust-service').value;
+            const date = document.getElementById('cust-date').value;
+            const time = document.getElementById('cust-time').value;
+
+            const text = `✨ *NEW APPOINTMENT ENQUIRY* ✨%0A%0A` +
+                         `👤 *Client Name:* ${encodeURIComponent(name)}%0A` +
+                         `💇‍♀️ *Service:* ${encodeURIComponent(service)}%0A` +
+                         `📅 *Date:* ${encodeURIComponent(date)}%0A` +
+                         `⏰ *Time Slot:* ${encodeURIComponent(time)}%0A%0A` +
+                         `_Sent via ÉLIXIR Luxury Salon Web Booking_`;
+
+            const whatsappUrl = `https://wa.me/${SALON_WHATSAPP_NUMBER}?text=${text}`;
+            window.open(whatsappUrl, '_blank');
+            closeBookingModal();
+        }
+
+        // Close on clicking outside
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeBookingModal();
+        });
+    </script>
+</body>
+</html>

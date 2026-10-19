@@ -1,0 +1,8 @@
+{
+  "buildCommand": "npm run build --prefix clinic-app",
+  "outputDirectory": "clinic-app/dist",
+  "cleanUrls": true,
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}

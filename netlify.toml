@@ -1,0 +1,8 @@
+[build]
+  command = "npm run build --prefix clinic-app"
+  publish = "clinic-app/dist"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

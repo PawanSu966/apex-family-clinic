@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clinic Counter QR Standee Generator | Print Ready</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- QR Code Generator Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        @media print {
+            .no-print { display: none !important; }
+            body { background: white !important; padding: 0 !important; }
+            .print-card { box-shadow: none !important; border: 2px solid #0284C7 !important; width: 100% !important; max-width: 100% !important; margin: 0 !important; }
+        }
+    </style>
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen p-6">
+
+    <div class="max-w-5xl mx-auto">
+        <!-- TOP CONTROL PANEL (HIDDEN ON PRINT) -->
+        <div class="no-print bg-slate-800 border border-slate-700 rounded-2xl p-6 mb-8 shadow-xl">
+            <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+                <div>
+                    <span class="text-xs font-bold uppercase tracking-wider text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded-md border border-emerald-500/20">
+                        🎁 Client Bonus Deliverable
+                    </span>
+                    <h1 class="text-xl font-bold text-white mt-2">Printable Clinic Counter QR Standee</h1>
+                    <p class="text-slate-400 text-xs mt-1">
+                        Doctor ko delivery ke waqt ye PDF/Print bhejein. Wo isko print karke reception counter par rakhenge!
+                    </p>
+                </div>
+                <div class="flex gap-3">
+                    <button onclick="window.print()" class="px-5 py-2.5 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold rounded-xl text-xs flex items-center gap-2 shadow-lg shadow-emerald-500/20 transition-all">
+                        <i data-lucide="printer" class="w-4 h-4"></i>
+                        <span>Print / Save as PDF</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- CONTROLS FORM -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-6 pt-6 border-t border-slate-700">
+                <div>
+                    <label class="block text-[11px] uppercase font-bold text-slate-400 mb-1">Doctor Name</label>
+                    <input type="text" id="input-doc-name" value="Dr. Alok Verma, MD" oninput="updateStandee()" 
+                           class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-xs text-white">
+                </div>
+                <div>
+                    <label class="block text-[11px] uppercase font-bold text-slate-400 mb-1">Clinic Name</label>
+                    <input type="text" id="input-clinic-name" value="Apex Speciality Clinic" oninput="updateStandee()" 
+                           class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-xs text-white">
+                </div>
+                <div>
+                    <label class="block text-[11px] uppercase font-bold text-slate-400 mb-1">Clinic Live Website URL</label>
+                    <input type="url" id="input-url" value="https://dr-verma-clinic.vercel.app" oninput="updateStandee()" 
+                           class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-xs text-emerald-400 font-mono">
+                </div>
+            </div>
+        </div>
+
+        <!-- THE PRINTABLE STANDEE (A4 / Table Top Proportion) -->
+        <div class="flex justify-center">
+            <div id="standee-card" class="print-card bg-white text-slate-900 rounded-3xl p-10 max-w-lg w-full shadow-2xl border-4 border-sky-600 text-center relative overflow-hidden">
+                
+                <!-- TOP HEADER -->
+                <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-sky-50 border border-sky-200 text-sky-700 text-xs font-bold uppercase tracking-wider mb-4">
+                    <i data-lucide="shield-check" class="w-4 h-4 text-sky-600"></i>
+                    Official Digital Token Desk
+                </div>
+
+                <h2 id="card-clinic" class="text-2xl font-black text-slate-900 tracking-tight">Apex Speciality Clinic</h2>
+                <p id="card-doc" class="text-sm font-semibold text-sky-700 mt-1">Dr. Alok Verma, MD</p>
+
+                <!-- BIG HERO MESSAGE -->
+                <div class="my-6 py-4 px-5 bg-gradient-to-r from-sky-50 via-slate-50 to-sky-50 rounded-2xl border border-sky-200">
+                    <span class="text-xs uppercase font-extrabold tracking-widest text-rose-600">Bheed me intezar na karein!</span>
+                    <h3 class="text-lg font-bold text-slate-900 mt-1">Agli baar ghar se Token le kar scheduled time par aaiye.</h3>
+                </div>
+
+                <!-- QR CODE WRAPPER -->
+                <div class="inline-block p-4 bg-white rounded-2xl border-2 border-slate-900 shadow-md my-2">
+                    <div id="qrcode" class="flex justify-center"></div>
+                </div>
+
+                <p class="text-xs font-bold text-slate-800 mt-3 uppercase tracking-wider">
+                    Scan with Mobile Camera / Google Lens
+                </p>
+                <p id="card-url" class="text-[11px] font-mono text-slate-500 mt-1">
+                    https://dr-verma-clinic.vercel.app
+                </p>
+
+                <!-- 3 SIMPLE STEPS FOR PATIENT -->
+                <div class="grid grid-cols-3 gap-2 mt-6 pt-6 border-t border-slate-200 text-left">
+                    <div class="p-2 bg-slate-50 rounded-xl border border-slate-200">
+                        <span class="font-extrabold text-sky-600 text-xs">Step 1</span>
+                        <p class="text-[10px] text-slate-700 mt-0.5 leading-tight font-medium">QR Scan karein</p>
+                    </div>
+                    <div class="p-2 bg-slate-50 rounded-xl border border-slate-200">
+                        <span class="font-extrabold text-sky-600 text-xs">Step 2</span>
+                        <p class="text-[10px] text-slate-700 mt-0.5 leading-tight font-medium">Naam & Slot chunein</p>
+                    </div>
+                    <div class="p-2 bg-slate-50 rounded-xl border border-slate-200">
+                        <span class="font-extrabold text-sky-600 text-xs">Step 3</span>
+                        <p class="text-[10px] text-slate-700 mt-0.5 leading-tight font-medium">WhatsApp par Token paayein</p>
+                    </div>
+                </div>
+
+                <!-- FOOTER -->
+                <div class="mt-6 text-[10px] text-slate-400">
+                    Emergency Helpline: +91 98765 43210 &bull; Patient Care Portal
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CLINIC CONFIG -->
+    <script src="clinic_config.js"></script>
+    <script>
+        lucide.createIcons();
+        let qrcodeObj = null;
+
+        // Populate from clinic_config.js if available
+        if (typeof CLINIC_CONFIG !== 'undefined') {
+            document.getElementById('input-doc-name').value = `${CLINIC_CONFIG.doctorName}, ${CLINIC_CONFIG.doctorDegree}`;
+            document.getElementById('input-clinic-name').value = CLINIC_CONFIG.clinicName;
+        }
+
+        function updateStandee() {
+            const doc = document.getElementById('input-doc-name').value;
+            const clinic = document.getElementById('input-clinic-name').value;
+            const url = document.getElementById('input-url').value;
+
+            document.getElementById('card-doc').innerText = doc;
+            document.getElementById('card-clinic').innerText = clinic;
+            document.getElementById('card-url').innerText = url;
+
+            const qrContainer = document.getElementById('qrcode');
+            qrContainer.innerHTML = "";
+            qrcodeObj = new QRCode(qrContainer, {
+                text: url,
+                width: 170,
+                height: 170,
+                colorDark: "#0f172a",
+                colorLight: "#ffffff",
+                correctLevel: QRCode.CorrectLevel.H
+            });
+        }
+
+        // Initialize
+        updateStandee();
+    </script>
+</body>
+</html>

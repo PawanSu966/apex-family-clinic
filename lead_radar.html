@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salon Lead Radar | Zero-Hesitation Client Outreach Engine</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen">
+
+    <!-- HEADER -->
+    <header class="border-b border-slate-800 bg-slate-900/60 sticky top-0 z-30 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400">
+                    <i data-lucide="radar" class="w-6 h-6"></i>
+                </div>
+                <div>
+                    <h1 class="font-bold text-lg text-white">LeadRadar &bull; Salon Hunter</h1>
+                    <p class="text-xs text-slate-400">100% Online &bull; Zero-Hesitation Outreach Engine</p>
+                </div>
+            </div>
+
+            <!-- Stats Bar -->
+            <div class="flex items-center gap-6 text-xs">
+                <div class="bg-slate-800/80 px-4 py-2 rounded-lg border border-slate-700/50">
+                    <span class="text-slate-400">Total Leads:</span>
+                    <span id="total-count" class="font-bold text-white ml-1.5">0</span>
+                </div>
+                <div class="bg-rose-950/40 px-4 py-2 rounded-lg border border-rose-800/40">
+                    <span class="text-rose-300">No Website (Hot):</span>
+                    <span id="no-web-count" class="font-bold text-rose-400 ml-1.5">0</span>
+                </div>
+                <div class="bg-emerald-950/40 px-4 py-2 rounded-lg border border-emerald-800/40">
+                    <span class="text-emerald-300">Pitched:</span>
+                    <span id="pitched-count" class="font-bold text-emerald-400 ml-1.5">0</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="max-w-7xl mx-auto px-6 py-8">
+
+        <!-- STEP 1: NICHE SELECTOR & HOW TO GET LEADS AUTOMATION BANNER -->
+        <div class="mb-8 p-6 rounded-2xl bg-gradient-to-r from-slate-900 to-slate-800 border border-slate-700/60 shadow-xl">
+            <!-- Niche Switcher Tabs -->
+            <div class="flex flex-wrap gap-2 mb-6 p-1.5 bg-slate-950/80 rounded-xl border border-slate-700/80 max-w-md">
+                <button onclick="switchNiche('doctor')" id="tab-doctor" class="niche-tab flex-1 py-2 px-3 rounded-lg text-xs font-bold transition-all text-slate-400 hover:text-white flex items-center justify-center gap-1.5">
+                    <span>🩺 Doctors</span>
+                </button>
+                <button onclick="switchNiche('interior')" id="tab-interior" class="niche-tab flex-1 py-2 px-3 rounded-lg text-xs font-bold transition-all text-slate-400 hover:text-white flex items-center justify-center gap-1.5">
+                    <span>🏡 Interior</span>
+                </button>
+                <button onclick="switchNiche('salon')" id="tab-salon" class="niche-tab active flex-1 py-2 px-3 rounded-lg text-xs font-bold transition-all bg-amber-500 text-slate-950 flex items-center justify-center gap-1.5">
+                    <span>💇‍♀️ Salons</span>
+                </button>
+            </div>
+
+            <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+                <div>
+                    <span id="niche-badge" class="text-[11px] font-bold uppercase tracking-wider text-amber-400 bg-amber-500/10 px-2.5 py-1 rounded-md border border-amber-500/20">
+                        ⚡ Targeting: Luxury Salons & Spas
+                    </span>
+                    <h2 id="niche-heading" class="text-xl font-bold text-white mt-2">Find Local Businesses Without Websites in 5 Mins</h2>
+                    <p id="niche-desc" class="text-slate-400 text-xs mt-1 max-w-2xl leading-relaxed">
+                        Google Maps search: <code id="search-keyword" class="text-amber-300 bg-slate-950 px-2 py-0.5 rounded">Luxury Salon in [City]</code><br>
+                        Jis business ke niche <strong>"Website" button NA ho</strong>, wahi aapka Hot Client hai!
+                    </p>
+                </div>
+                <div class="flex gap-3">
+                    <button onclick="loadSampleHotLeads()" class="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-600 text-white text-xs font-semibold flex items-center gap-2 transition-all">
+                        <i data-lucide="sparkles" class="w-4 h-4 text-amber-400"></i>
+                        <span>Load Sample Leads</span>
+                    </button>
+                    <button onclick="toggleAddForm()" class="px-5 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-bold flex items-center gap-2 shadow-lg shadow-amber-500/20 transition-all">
+                        <i data-lucide="plus" class="w-4 h-4"></i>
+                        <span>+ Add Lead</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- ADD LEAD FORM (COLLAPSIBLE) -->
+            <div id="add-form" class="mt-6 pt-6 border-t border-slate-700/60 hidden">
+                <form onsubmit="handleNewLead(event)" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-3">
+                    <div>
+                        <label class="block text-[11px] uppercase tracking-wider text-slate-400 mb-1">Salon Name</label>
+                        <input type="text" id="lead-name" required placeholder="e.g. Royal Crown Unisex Salon" 
+                               class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-amber-400">
+                    </div>
+                    <div>
+                        <label class="block text-[11px] uppercase tracking-wider text-slate-400 mb-1">City / Area</label>
+                        <input type="text" id="lead-city" required placeholder="e.g. Malviya Nagar, Jaipur" 
+                               class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-amber-400">
+                    </div>
+                    <div>
+                        <label class="block text-[11px] uppercase tracking-wider text-slate-400 mb-1">WhatsApp / Phone</label>
+                        <input type="tel" id="lead-phone" required placeholder="e.g. 9876543210" 
+                               class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-amber-400">
+                    </div>
+                    <div>
+                        <label class="block text-[11px] uppercase tracking-wider text-slate-400 mb-1">Website Status</label>
+                        <select id="lead-web-status" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-amber-400">
+                            <option value="none">🔴 NO Website (Hot Lead)</option>
+                            <option value="outdated">🟡 Bad / Broken Website</option>
+                            <option value="has">🟢 Has Modern Website</option>
+                        </select>
+                    </div>
+                    <div class="flex items-end">
+                        <button type="submit" class="w-full bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold py-2 rounded-lg text-xs flex items-center justify-center gap-1.5 transition-all">
+                            <i data-lucide="check" class="w-4 h-4"></i> Save Lead
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- DEMO LINK SETTER -->
+        <div class="mb-6 p-4 rounded-xl bg-slate-900 border border-slate-800 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+            <div class="flex items-center gap-2">
+                <i data-lucide="link" class="w-4 h-4 text-amber-400"></i>
+                <span class="text-xs text-slate-300 font-medium">Your Demo Website URL (jo pitch me jayega):</span>
+            </div>
+            <div class="flex items-center gap-2 w-full sm:w-auto">
+                <input type="url" id="demo-url" value="https://elixir-luxe-salon.vercel.app" 
+                       class="bg-slate-950 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-amber-300 font-mono w-full sm:w-80 focus:outline-none focus:border-amber-400">
+                <button onclick="saveDemoUrl()" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 border border-slate-600 rounded-lg text-xs text-white font-medium">Save</button>
+            </div>
+        </div>
+
+        <!-- FILTER & SEARCH BAR -->
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-4 mb-4">
+            <div class="flex items-center gap-2 w-full sm:w-auto">
+                <div class="relative w-full sm:w-72">
+                    <i data-lucide="search" class="w-4 h-4 text-slate-500 absolute left-3 top-2.5"></i>
+                    <input type="text" id="search-input" oninput="renderTable()" placeholder="Search salon or city..." 
+                           class="w-full bg-slate-900 border border-slate-800 rounded-xl pl-9 pr-3 py-2 text-xs text-white focus:outline-none focus:border-slate-600">
+                </div>
+                <select id="status-filter" onchange="renderTable()" class="bg-slate-900 border border-slate-800 rounded-xl px-3 py-2 text-xs text-slate-300 focus:outline-none">
+                    <option value="all">All Leads</option>
+                    <option value="none" selected>🔴 Only NO Website (High Priority)</option>
+                    <option value="not-pitched">⏳ Not Yet Pitched</option>
+                    <option value="pitched">✅ Already Pitched</option>
+                </select>
+            </div>
+
+            <div class="text-xs text-slate-400">
+                Tip: Click <strong>"Send WhatsApp Pitch"</strong> to open ready-made message in 1 click!
+            </div>
+        </div>
+
+        <!-- LEADS TABLE -->
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-2xl">
+            <div class="overflow-x-auto">
+                <table class="w-full text-left text-xs">
+                    <thead class="bg-slate-950 border-b border-slate-800 text-[11px] uppercase tracking-wider text-slate-400 font-semibold">
+                        <tr>
+                            <th class="py-3.5 px-4">Salon Name</th>
+                            <th class="py-3.5 px-4">City / Area</th>
+                            <th class="py-3.5 px-4">Website Status</th>
+                            <th class="py-3.5 px-4">Phone / WhatsApp</th>
+                            <th class="py-3.5 px-4">Outreach Status</th>
+                            <th class="py-3.5 px-4 text-right">1-Click Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="leads-tbody" class="divide-y divide-slate-800/60 font-light">
+                        <!-- Populated by JS -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- EMPTY STATE -->
+        <div id="empty-state" class="text-center py-16 hidden">
+            <i data-lucide="inbox" class="w-12 h-12 text-slate-600 mx-auto mb-3"></i>
+            <h3 class="text-base font-semibold text-slate-300">No leads matching your filter</h3>
+            <p class="text-xs text-slate-500 mt-1">Click "Load Sample Hot Leads" above to populate real-life examples!</p>
+        </div>
+
+        <!-- HOW THE CONVERSATION WORKS WITHOUT HESITATION -->
+        <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="p-6 rounded-2xl bg-slate-900/60 border border-slate-800">
+                <div class="w-8 h-8 rounded-lg bg-indigo-500/10 text-indigo-400 flex items-center justify-center font-bold text-sm mb-3">1</div>
+                <h4 class="text-white text-sm font-semibold">Zero Phone Calls</h4>
+                <p class="text-xs text-slate-400 mt-1 leading-relaxed">
+                    Aapko kisi ko call nahi karni. Sirf 1-Click WhatsApp send button dabana hai. Text message me koi hesitation ya sharm nahi hoti!
+                </p>
+            </div>
+
+            <div class="p-6 rounded-2xl bg-slate-900/60 border border-slate-800">
+                <div class="w-8 h-8 rounded-lg bg-amber-500/10 text-amber-400 flex items-center justify-center font-bold text-sm mb-3">2</div>
+                <h4 class="text-white text-sm font-semibold">Ready-Made Pitch</h4>
+                <p class="text-xs text-slate-400 mt-1 leading-relaxed">
+                    Message me unka specific salon name aur demo link pehle se jud jata hai. Owner dekhega toh lagega ki unke liye hi banaya gaya hai.
+                </p>
+            </div>
+
+            <div class="p-6 rounded-2xl bg-slate-900/60 border border-slate-800">
+                <div class="w-8 h-8 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center font-bold text-sm mb-3">3</div>
+                <h4 class="text-white text-sm font-semibold">Numbers Game</h4>
+                <p class="text-xs text-slate-400 mt-1 leading-relaxed">
+                    Roz sirf 10 WhatsApp messages bhejo (takes 5 mins). 10 me se 1 ne bhi bola "Haan details batao", wahi aapki ₹3,000 - ₹5,000 ki deal hai.
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        lucide.createIcons();
+
+        // Niche Configurations
+        const NICHE_CONFIG = {
+            doctor: {
+                name: "Doctors & Speciality Clinics",
+                badge: "⚡ Targeting: Doctors, Dentists & Clinics",
+                heading: "Find Clinics & Doctors Without Websites (Queue / Token Need)",
+                desc: "Search Google Maps: <code class='text-amber-300 bg-slate-950 px-2 py-0.5 rounded'>Doctor Clinic in [City]</code> or <code class='text-amber-300 bg-slate-950 px-2 py-0.5 rounded'>Dentist in [City]</code>.<br>Jis doctor ke paas website NA ho, unhe Zero-Waiting Digital Token system pitch karein!",
+                keyword: "Doctor Clinic in [City]",
+                defaultDemo: "https://dr-verma-clinic.vercel.app",
+                samples: [
+                    { id: 101, name: "Dr. R.K. Gupta Family Clinic", city: "Raja Park, Jaipur", phone: "9829012345", website: "none", pitched: false, notes: "" },
+                    { id: 102, name: "City Dental Care & Implant Center", city: "Dwarka, New Delhi", phone: "9818765432", website: "none", pitched: false, notes: "" },
+                    { id: 103, name: "Dr. Sunita Skin & Hair Clinic", city: "Kothrud, Pune", phone: "9823123456", website: "none", pitched: false, notes: "" },
+                    { id: 104, name: "Dr. Mehta Orthopedic Center", city: "Andheri East, Mumbai", phone: "9820456789", website: "none", pitched: false, notes: "" },
+                ],
+                pitch: (lead, url) => 
+`Namaste Dr. ${lead.name} ✨%0A%0A` +
+`Humne aapka clinic dekha (${lead.city})—aapka patient trust aur experience bohot sarahneey hai!%0A%0A` +
+`Aksar clinics me patients ko 1-2 ghante bheed me intezar karna padta hai jisse unhe aur clinic staff dono ko pareshani hoti hai. Isko solve karne ke liye humne ek exclusive *Zero-Waiting Digital Token & Clinic Website System* design kiya hai:%0A%0A` +
+`🔗 *Live Clinic Demo:* ${encodeURIComponent(url)}%0A%0A` +
+`*Clinic Benefits:*%0A` +
+`• Patients ghar se hi WhatsApp par Digital Token & Time Slot book kar sakte hain%0A` +
+`• Waiting room me bheed khatam hogi aur patients time par aayenge%0A` +
+`• Complete clinic timings, fees aur instructions clear dikhengi%0A%0A` +
+`Agar aapko ye pasand aaye, toh hum ise *₹2,999* me aapke clinic details ke sath 24 ghante me live deliver kar denge.%0A%0A` +
+`— *Aura Luxe Studios (Digital Healthcare Partner)*`
+            },
+            interior: {
+                name: "Interior Designers & Architects",
+                badge: "⚡ Targeting: Interior Studios & Architects",
+                heading: "Find Interior Designers Without Websites (High Budget Niche)",
+                desc: "Search Google Maps: <code class='text-amber-300 bg-slate-950 px-2 py-0.5 rounded'>Interior Designer in [City]</code>.<br>Bina website wale interior designer ko koi ₹10 Lakh ka project nahi deta. Inhe portfolio + cost estimator pitch karein!",
+                keyword: "Interior Designer in [City]",
+                defaultDemo: "https://atelier-noir-interior.vercel.app",
+                samples: [
+                    { id: 201, name: "Vogue Living Interior Studio", city: "Jubilee Hills, Hyderabad", phone: "9849012345", website: "none", pitched: false, notes: "" },
+                    { id: 202, name: "Urban Spaces Architecture", city: "Whitefield, Bengaluru", phone: "9845123456", website: "none", pitched: false, notes: "" },
+                    { id: 203, name: "Nexus Decor & Turnkey Interiors", city: "Noida Sector 62", phone: "9810987654", website: "none", pitched: false, notes: "" },
+                    { id: 204, name: "Aesthetic Wood Interior Studio", city: "Vaishali Nagar, Jaipur", phone: "9829567890", website: "none", pitched: false, notes: "" },
+                ],
+                pitch: (lead, url) => 
+`Namaste Team ${lead.name} 🏡%0A%0A` +
+`Humne aapke turnkey interior projects dekhe (${lead.city})—aapka design aesthetic bohot classy hai!%0A%0A` +
+`High-ticket home & villa owners ko impress karne ke liye humne ek *Architectural Portfolio & Instant Cost Estimator Web Suite* design kiya hai:%0A%0A` +
+`🔗 *Live Studio Demo:* ${encodeURIComponent(url)}%0A%0A` +
+`*Key Features:*%0A` +
+`• Interactive Project Cost Estimator (Client calculates budget & books 3D consultation)%0A` +
+`• High-Resolution Signature Portfolio & Before/After showcase%0A` +
+`• Direct WhatsApp Lead Capture for high-ticket projects%0A%0A` +
+`Isko hum aapke firm ke branding aur project photos ke sath ₹3,999 me live setup kar sakte hain.%0A%0A` +
+`— *Aura Luxe Studios (Architecture & Design Media)*`
+            },
+            salon: {
+                name: "Luxury Salons & Spas",
+                badge: "⚡ Targeting: Luxury Salons & Spas",
+                heading: "Find Salons Without Websites in 5 Mins",
+                desc: "Search Google Maps: <code class='text-amber-300 bg-slate-950 px-2 py-0.5 rounded'>Luxury Salon in [City]</code>.<br>Jis salon ke niche 'Website' button NA ho, unhe Treatment Menu + 1-Click WhatsApp Booking pitch karein!",
+                keyword: "Luxury Salon in [City]",
+                defaultDemo: "https://elixir-luxe-salon.vercel.app",
+                samples: [
+                    { id: 301, name: "Velvet Luxe Hair Studio", city: "Bandra West, Mumbai", phone: "9820112345", website: "none", pitched: false, notes: "" },
+                    { id: 302, name: "The Glamour Room Unisex Salon", city: "South Ex, New Delhi", phone: "9811456789", website: "none", pitched: false, notes: "" },
+                    { id: 303, name: "Crown & Scissors Luxury Salon", city: "C-Scheme, Jaipur", phone: "9829054321", website: "none", pitched: false, notes: "" },
+                ],
+                pitch: (lead, url) =>
+`Namaste Team ${lead.name} ✨%0A%0A` +
+`Humne aapka salon dekha (${lead.city})—aapka work and client reviews bohot impressive hain!%0A%0A` +
+`Aapke salon ke luxury clients ke liye humne ek exclusive *Luxury Web Presence & 1-Click WhatsApp Booking Engine* design kiya hai:%0A%0A` +
+`🔗 *Live Demo:* ${encodeURIComponent(url)}%0A%0A` +
+`*Key Features for your Salon:*%0A` +
+`• Complete Treatment Menu with Prices & Curated Categories%0A` +
+`• Direct WhatsApp Appointment Booking (Zero missed calls/bookings)%0A` +
+`• Ultra-Luxury Dark Gold Aesthetic on Mobile%0A%0A` +
+`Agar aapko ye concept pasand aaye, toh hum ise *₹2,999* me aapke salon ke name, photos, prices aur WhatsApp number ke sath 24 ghante me live deliver kar denge.%0A%0A` +
+`— *Aura Luxe Studios (Digital Partner)*`
+            }
+        };
+
+        let currentNiche = 'salon';
+        let leads = JSON.parse(localStorage.getItem('niche_leads_' + currentNiche)) || NICHE_CONFIG[currentNiche].samples;
+        let demoUrl = localStorage.getItem('demo_url_' + currentNiche) || NICHE_CONFIG[currentNiche].defaultDemo;
+
+        function switchNiche(niche) {
+            currentNiche = niche;
+            
+            // Switch tab UI
+            document.querySelectorAll('.niche-tab').forEach(t => {
+                t.classList.remove('bg-amber-500', 'text-slate-950');
+                t.classList.add('text-slate-400');
+            });
+            const activeTab = document.getElementById('tab-' + niche);
+            if (activeTab) {
+                activeTab.classList.add('bg-amber-500', 'text-slate-950');
+                activeTab.classList.remove('text-slate-400');
+            }
+
+            const conf = NICHE_CONFIG[niche];
+            document.getElementById('niche-badge').innerText = conf.badge;
+            document.getElementById('niche-heading').innerText = conf.heading;
+            document.getElementById('niche-desc').innerHTML = conf.desc;
+
+            demoUrl = localStorage.getItem('demo_url_' + niche) || conf.defaultDemo;
+            document.getElementById('demo-url').value = demoUrl;
+
+            leads = JSON.parse(localStorage.getItem('niche_leads_' + niche)) || conf.samples;
+            saveAndRender();
+        }
+
+        function saveDemoUrl() {
+            demoUrl = document.getElementById('demo-url').value.trim();
+            localStorage.setItem('demo_url_' + currentNiche, demoUrl);
+            alert("Demo URL updated for " + NICHE_CONFIG[currentNiche].name + "!");
+        }
+
+        function toggleAddForm() {
+            const form = document.getElementById('add-form');
+            form.classList.toggle('hidden');
+        }
+
+        function loadSampleHotLeads() {
+            leads = [...NICHE_CONFIG[currentNiche].samples];
+            saveAndRender();
+        }
+
+        function handleNewLead(e) {
+            e.preventDefault();
+            const name = document.getElementById('lead-name').value.trim();
+            const city = document.getElementById('lead-city').value.trim();
+            let phone = document.getElementById('lead-phone').value.trim().replace(/\D/g, '');
+            const website = document.getElementById('lead-web-status').value;
+
+            leads.unshift({
+                id: Date.now(),
+                name,
+                city,
+                phone,
+                website,
+                pitched: false,
+                notes: ""
+            });
+
+            e.target.reset();
+            toggleAddForm();
+            saveAndRender();
+        }
+
+        function togglePitched(id) {
+            const lead = leads.find(l => l.id === id);
+            if (lead) {
+                lead.pitched = !lead.pitched;
+                saveAndRender();
+            }
+        }
+
+        function deleteLead(id) {
+            if (confirm("Delete this lead?")) {
+                leads = leads.filter(l => l.id !== id);
+                saveAndRender();
+            }
+        }
+
+        function generatePitchUrl(lead) {
+            let cleanPhone = lead.phone.replace(/\D/g, '');
+            if (!cleanPhone.startsWith('91') && cleanPhone.length === 10) {
+                cleanPhone = '91' + cleanPhone;
+            }
+
+            const message = NICHE_CONFIG[currentNiche].pitch(lead, demoUrl);
+            return `https://wa.me/${cleanPhone}?text=${message}`;
+        }
+
+        function openPitch(id) {
+            const lead = leads.find(l => l.id === id);
+            if (!lead) return;
+
+            lead.pitched = true;
+            saveAndRender();
+
+            const url = generatePitchUrl(lead);
+            window.open(url, '_blank');
+        }
+
+        function saveAndRender() {
+            localStorage.setItem('niche_leads_' + currentNiche, JSON.stringify(leads));
+            renderTable();
+        }
+
+        function renderTable() {
+            const tbody = document.getElementById('leads-tbody');
+            const search = document.getElementById('search-input').value.toLowerCase();
+            const filter = document.getElementById('status-filter').value;
+            const empty = document.getElementById('empty-state');
+
+            // Update Header Stats
+            document.getElementById('total-count').innerText = leads.length;
+            document.getElementById('no-web-count').innerText = leads.filter(l => l.website === 'none').length;
+            document.getElementById('pitched-count').innerText = leads.filter(l => l.pitched).length;
+
+            const filtered = leads.filter(lead => {
+                const matchSearch = lead.name.toLowerCase().includes(search) || lead.city.toLowerCase().includes(search);
+                if (!matchSearch) return false;
+
+                if (filter === 'none') return lead.website === 'none';
+                if (filter === 'not-pitched') return !lead.pitched;
+                if (filter === 'pitched') return lead.pitched;
+                return true;
+            });
+
+            if (filtered.length === 0) {
+                tbody.innerHTML = '';
+                empty.classList.remove('hidden');
+                return;
+            } else {
+                empty.classList.add('hidden');
+            }
+
+            tbody.innerHTML = filtered.map(lead => `
+                <tr class="hover:bg-slate-800/40 transition-colors">
+                    <td class="py-3.5 px-4 font-semibold text-white">
+                        ${lead.name}
+                    </td>
+                    <td class="py-3.5 px-4 text-slate-400">
+                        ${lead.city}
+                    </td>
+                    <td class="py-3.5 px-4">
+                        ${lead.website === 'none' 
+                            ? `<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-bold bg-rose-500/10 text-rose-400 border border-rose-500/20">
+                                 <span class="w-1.5 h-1.5 rounded-full bg-rose-400 animate-pulse"></span> NO WEBSITE (HOT)
+                               </span>`
+                            : lead.website === 'outdated'
+                            ? `<span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-amber-500/10 text-amber-400 border border-amber-500/20">BAD / OUTDATED</span>`
+                            : `<span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">HAS WEBSITE</span>`
+                        }
+                    </td>
+                    <td class="py-3.5 px-4 font-mono text-slate-300">
+                        +91 ${lead.phone}
+                    </td>
+                    <td class="py-3.5 px-4">
+                        <button onclick="togglePitched(${lead.id})" class="px-2.5 py-1 rounded-md text-[10px] font-semibold border ${lead.pitched ? 'bg-emerald-950 text-emerald-300 border-emerald-700/60' : 'bg-slate-800 text-slate-400 border-slate-700'}">
+                            ${lead.pitched ? '✅ Pitched' : '⏳ Not Pitched'}
+                        </button>
+                    </td>
+                    <td class="py-3.5 px-4 text-right">
+                        <div class="inline-flex items-center gap-2">
+                            <button onclick="openPitch(${lead.id})" class="bg-[#25D366] hover:bg-[#20ba59] text-white px-3.5 py-1.5 rounded-lg text-xs font-bold flex items-center gap-1.5 shadow-md shadow-[#25D366]/20 transition-all">
+                                <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                                    <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.173.086.275.071.376-.043.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564c.173.087.289.129.332.202.043.073.043.419-.101.824z"/>
+                                </svg>
+                                <span>Send Pitch</span>
+                            </button>
+                            <button onclick="deleteLead(${lead.id})" class="text-slate-500 hover:text-rose-400 p-1">
+                                <i data-lucide="trash-2" class="w-4 h-4"></i>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            `).join('');
+
+            lucide.createIcons();
+        }
+
+        // Initialize with sample leads if empty
+        if (leads.length === 0) {
+            loadSampleHotLeads();
+        } else {
+            renderTable();
+        }
+    </script>
+</body>
+</html>

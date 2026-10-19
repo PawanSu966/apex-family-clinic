@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATELIER NOIR | Architectural & Luxury Interior Studio</title>
+    <meta name="description" content="Award-winning bespoke residential and commercial interior design studio. Turnkey execution & 3D visualization.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        warm: {
+                            50: '#FBF9F5',
+                            100: '#F5F1E8',
+                            200: '#E8DFCC',
+                            800: '#2C2723',
+                            900: '#181513',
+                        },
+                        amberluxe: '#C69C6D'
+                    },
+                    fontFamily: {
+                        serif: ['"Cinzel"', 'serif'],
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-warm-50 text-warm-900 font-sans antialiased selection:bg-amberluxe selection:text-white">
+
+    <!-- TOP BAR -->
+    <div class="bg-warm-900 text-warm-200 py-2 px-6 text-xs text-center uppercase tracking-[0.25em] font-light">
+        Accepting Select Turnkey Residential Projects &bull; Mumbai &bull; Delhi NCR &bull; Bengaluru
+    </div>
+
+    <!-- NAVIGATION -->
+    <nav class="sticky top-0 z-40 bg-warm-50/90 backdrop-blur-md border-b border-warm-200">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="#" class="flex flex-col">
+                <span class="font-serif text-xl tracking-[0.3em] font-bold text-warm-900">ATELIER NOIR</span>
+                <span class="text-[9px] uppercase tracking-[0.35em] text-amberluxe">Architecture & Interiors</span>
+            </a>
+
+            <div class="hidden md:flex items-center space-x-8 text-xs uppercase tracking-widest font-medium text-warm-800">
+                <a href="#portfolio" class="hover:text-amberluxe transition-colors">Portfolio</a>
+                <a href="#estimator" class="hover:text-amberluxe transition-colors">Cost Estimator</a>
+                <a href="#process" class="hover:text-amberluxe transition-colors">Design Process</a>
+                <a href="#about" class="hover:text-amberluxe transition-colors">The Studio</a>
+            </div>
+
+            <button onclick="openConsultationModal()" class="px-5 py-2.5 rounded-full bg-warm-900 hover:bg-black text-white text-xs uppercase tracking-widest font-semibold transition-all">
+                Book Consultation
+            </button>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header class="relative min-h-[85vh] flex items-center justify-center overflow-hidden border-b border-warm-200">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=2000&q=80" 
+                 alt="Luxury Living Room" 
+                 class="w-full h-full object-cover filter brightness-[0.45] contrast-105">
+        </div>
+
+        <div class="relative z-10 max-w-4xl mx-auto px-6 text-center text-white py-20">
+            <span class="inline-block text-xs uppercase tracking-[0.35em] text-amberluxe mb-4 font-semibold">
+                Turnkey Architecture & Bespoke Interiors
+            </span>
+
+            <h1 class="font-serif text-4xl sm:text-6xl lg:text-7xl font-normal tracking-tight leading-[1.12] mb-6">
+                Spaces Sculpted for <br>
+                <span class="italic text-amberluxe">Refined Living.</span>
+            </h1>
+
+            <p class="text-stone-300 text-sm sm:text-base max-w-2xl mx-auto font-light leading-relaxed mb-10">
+                From luxury high-rise penthouses to expansive private estates. We craft timeless architectural narratives with end-to-end turnkey execution.
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#estimator" class="w-full sm:w-auto px-8 py-4 rounded-full bg-amberluxe hover:bg-[#b58b5c] text-white font-bold text-xs uppercase tracking-[0.2em] shadow-lg transition-all">
+                    Calculate Project Estimate
+                </a>
+                <button onclick="openConsultationModal()" class="w-full sm:w-auto px-8 py-4 rounded-full border border-white/60 hover:bg-white hover:text-warm-900 text-white font-medium text-xs uppercase tracking-[0.2em] transition-all">
+                    Book WhatsApp Consultation
+                </button>
+            </div>
+
+            <!-- Stats -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 mt-16 pt-8 border-t border-white/20 text-left">
+                <div>
+                    <p class="font-serif text-3xl font-bold text-white">140+</p>
+                    <p class="text-[11px] text-stone-400 uppercase tracking-wider mt-1">Homes Transformed</p>
+                </div>
+                <div>
+                    <p class="font-serif text-3xl font-bold text-white">45 Days</p>
+                    <p class="text-[11px] text-stone-400 uppercase tracking-wider mt-1">On-Time Handover</p>
+                </div>
+                <div>
+                    <p class="font-serif text-3xl font-bold text-white">10 Yrs</p>
+                    <p class="text-[11px] text-stone-400 uppercase tracking-wider mt-1">Material Warranty</p>
+                </div>
+                <div>
+                    <p class="font-serif text-3xl font-bold text-white">100%</p>
+                    <p class="text-[11px] text-stone-400 uppercase tracking-wider mt-1">Turnkey In-House</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- PORTFOLIO SHOWCASE -->
+    <section id="portfolio" class="py-24 px-6 max-w-7xl mx-auto">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+            <div>
+                <span class="text-amberluxe text-xs uppercase tracking-[0.3em] font-semibold">Selected Works</span>
+                <h2 class="font-serif text-3xl sm:text-5xl text-warm-900 font-normal mt-2">Signature Projects</h2>
+            </div>
+            <p class="text-stone-500 text-xs uppercase tracking-widest mt-4 md:mt-0">
+                Residential &bull; Commercial &bull; Hospitality
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="group relative overflow-hidden rounded-2xl bg-warm-200 aspect-[4/5] cursor-pointer">
+                <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1000&q=80" 
+                     alt="Minimalist Penthouse" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent p-6 flex flex-col justify-end text-white">
+                    <span class="text-[10px] uppercase tracking-widest text-amberluxe font-semibold">Worli, Mumbai &bull; 4,200 sq.ft</span>
+                    <h3 class="font-serif text-2xl font-normal mt-1">The Monolith Penthouse</h3>
+                    <p class="text-xs text-stone-300 mt-2 line-clamp-2">Italian travertine stone, concealed acoustic paneling, and customized fluted brass cabinetry.</p>
+                </div>
+            </div>
+
+            <div class="group relative overflow-hidden rounded-2xl bg-warm-200 aspect-[4/5] cursor-pointer">
+                <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1000&q=80" 
+                     alt="Nordic Villa" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent p-6 flex flex-col justify-end text-white">
+                    <span class="text-[10px] uppercase tracking-widest text-amberluxe font-semibold">Golf Links, New Delhi &bull; 6,500 sq.ft</span>
+                    <h3 class="font-serif text-2xl font-normal mt-1">Villa Solarium</h3>
+                    <p class="text-xs text-stone-300 mt-2 line-clamp-2">Japandi natural oak woodwork, open courtyard skylight, and bespoke sculptural lighting.</p>
+                </div>
+            </div>
+
+            <div class="group relative overflow-hidden rounded-2xl bg-warm-200 aspect-[4/5] cursor-pointer">
+                <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1000&q=80" 
+                     alt="Creative Studio Office" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent p-6 flex flex-col justify-end text-white">
+                    <span class="text-[10px] uppercase tracking-widest text-amberluxe font-semibold">Indiranagar, Bengaluru &bull; 3,800 sq.ft</span>
+                    <h3 class="font-serif text-2xl font-normal mt-1">Kanso Design Headquarters</h3>
+                    <p class="text-xs text-stone-300 mt-2 line-clamp-2">Industrial raw concrete ceilings with warm walnut work pods and biophilic plant walls.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INTERACTIVE COST & ESTIMATE CALCULATOR -->
+    <section id="estimator" class="py-24 px-6 bg-warm-100 border-y border-warm-200">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-12">
+                <span class="text-amberluxe text-xs uppercase tracking-[0.3em] font-semibold">Transparency First</span>
+                <h2 class="font-serif text-3xl sm:text-5xl text-warm-900 font-normal mt-2">Project Cost Estimator</h2>
+                <p class="text-stone-600 text-xs sm:text-sm mt-3">Calculate estimated ballpark budget for your space in 10 seconds.</p>
+            </div>
+
+            <div class="bg-white p-8 sm:p-12 rounded-3xl shadow-xl border border-warm-200">
+                <div class="space-y-6">
+                    <div>
+                        <label class="block text-xs uppercase tracking-wider font-bold text-warm-800 mb-2">1. Select Property Configuration</label>
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                            <button onclick="setPropType('2bhk', 1100, this)" class="prop-btn active p-3 rounded-xl border border-warm-900 bg-warm-900 text-white text-xs font-semibold text-center transition-all">2 BHK (1,100 sq ft)</button>
+                            <button onclick="setPropType('3bhk', 1650, this)" class="prop-btn p-3 rounded-xl border border-warm-200 hover:border-warm-800 text-warm-800 text-xs font-semibold text-center transition-all">3 BHK (1,650 sq ft)</button>
+                            <button onclick="setPropType('4bhk', 2400, this)" class="prop-btn p-3 rounded-xl border border-warm-200 hover:border-warm-800 text-warm-800 text-xs font-semibold text-center transition-all">4 BHK / Villa (2,400+)</button>
+                            <button onclick="setPropType('commercial', 2000, this)" class="prop-btn p-3 rounded-xl border border-warm-200 hover:border-warm-800 text-warm-800 text-xs font-semibold text-center transition-all">Office / Commercial</button>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs uppercase tracking-wider font-bold text-warm-800 mb-2">2. Desired Finish Level</label>
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                            <button onclick="setFinish('premium', 1600, this)" class="finish-btn active p-4 rounded-xl border border-warm-900 bg-warm-900 text-white text-left transition-all">
+                                <div class="font-bold text-xs uppercase">Premium Modern</div>
+                                <div class="text-[11px] text-warm-200 mt-1">Modular woodwork, branded fittings, paint & lighting</div>
+                            </button>
+                            <button onclick="setFinish('luxury', 2400, this)" class="finish-btn p-4 rounded-xl border border-warm-200 hover:border-warm-800 text-warm-800 text-left transition-all">
+                                <div class="font-bold text-xs uppercase">Bespoke Luxury</div>
+                                <div class="text-[11px] text-stone-500 mt-1">Italian marble accents, customized veneers, false ceilings</div>
+                            </button>
+                            <button onclick="setFinish('ultra', 3500, this)" class="finish-btn p-4 rounded-xl border border-warm-200 hover:border-warm-800 text-warm-800 text-left transition-all">
+                                <div class="font-bold text-xs uppercase">Ultra Couture</div>
+                                <div class="text-[11px] text-stone-500 mt-1">Imported stone, smart home automation, bespoke furniture</div>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Calculated Result Display -->
+                    <div class="mt-8 p-6 bg-warm-50 rounded-2xl border border-warm-200 flex flex-col sm:flex-row items-center justify-between gap-4">
+                        <div>
+                            <span class="text-xs uppercase tracking-widest text-stone-500 font-semibold">Estimated Budget Range:</span>
+                            <div id="est-price" class="font-serif text-3xl sm:text-4xl font-bold text-warm-900 mt-1">₹17.5 Lakh &ndash; ₹21 Lakh</div>
+                            <p class="text-[11px] text-stone-500 mt-1">*Turnkey estimate including 3D designs, material & execution labor.</p>
+                        </div>
+
+                        <button onclick="sendEstimateWhatsApp()" class="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg shadow-emerald-600/20 transition-all">
+                            <i data-lucide="message-square" class="w-4 h-4"></i>
+                            <span>Get Detailed Quote on WhatsApp</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-12 px-6 bg-warm-900 text-warm-200 text-center text-xs">
+        <p class="font-serif text-lg tracking-[0.2em] font-semibold text-white mb-2">ATELIER NOIR</p>
+        <p class="text-stone-400">&copy; 2026 Atelier Noir Interior Architecture. All projects patented & copyrighted.</p>
+    </footer>
+
+    <!-- CONSULTATION MODAL -->
+    <div id="consult-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300">
+        <div class="bg-warm-50 rounded-3xl p-8 max-w-md w-full relative shadow-2xl border border-warm-200">
+            <button onclick="closeConsultModal()" class="absolute top-5 right-5 text-warm-800 hover:text-black p-2">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+
+            <div class="text-center mb-6">
+                <span class="text-amberluxe text-[10px] uppercase tracking-[0.25em] font-semibold">Direct Architectural Lead</span>
+                <h3 class="font-serif text-2xl text-warm-900 mt-1">Book 3D Design Consultation</h3>
+                <p class="text-stone-600 text-xs mt-1">Share property dimensions for an architect callback.</p>
+            </div>
+
+            <form onsubmit="handleConsultSubmit(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs uppercase tracking-wider text-warm-800 mb-1 font-semibold">Full Name</label>
+                    <input type="text" id="owner-name" required placeholder="e.g. Ananya Singhal" 
+                           class="w-full bg-white border border-warm-200 rounded-xl px-4 py-2.5 text-xs text-warm-900 focus:outline-none focus:border-amberluxe">
+                </div>
+
+                <div>
+                    <label class="block text-xs uppercase tracking-wider text-warm-800 mb-1 font-semibold">Property Location & Type</label>
+                    <input type="text" id="owner-prop" required placeholder="e.g. 3BHK Penthouse, Gurugram" 
+                           class="w-full bg-white border border-warm-200 rounded-xl px-4 py-2.5 text-xs text-warm-900 focus:outline-none focus:border-amberluxe">
+                </div>
+
+                <div>
+                    <label class="block text-xs uppercase tracking-wider text-warm-800 mb-1 font-semibold">Approx. Possession Date</label>
+                    <select id="owner-possession" class="w-full bg-white border border-warm-200 rounded-xl px-3 py-2.5 text-xs text-warm-900 focus:outline-none focus:border-amberluxe">
+                        <option value="Ready to move / Immediate">Ready to move / Immediate</option>
+                        <option value="Within 1-3 Months">Within 1-3 Months</option>
+                        <option value="Within 3-6 Months">Within 3-6 Months</option>
+                        <option value="Just exploring ideas">Just exploring ideas</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="w-full mt-4 bg-warm-900 hover:bg-black text-white font-bold py-3.5 rounded-xl uppercase tracking-widest text-xs flex items-center justify-center gap-2 transition-all">
+                    <span>Connect on WhatsApp</span>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        lucide.createIcons();
+        const INTERIOR_WHATSAPP = "919876543210";
+
+        let currentSqFt = 1100;
+        let currentRate = 1600;
+        let currentConfig = "2 BHK (1,100 sq ft)";
+        let currentFinish = "Premium Modern";
+
+        function updateEstimate() {
+            const low = Math.round((currentSqFt * currentRate) / 100000 * 10) / 10;
+            const high = Math.round((low * 1.2) * 10) / 10;
+            document.getElementById('est-price').innerText = `₹${low} Lakh – ₹${high} Lakh`;
+        }
+
+        function setPropType(type, sqft, btn) {
+            currentSqFt = sqft;
+            currentConfig = btn.innerText;
+            document.querySelectorAll('.prop-btn').forEach(b => {
+                b.classList.remove('bg-warm-900', 'text-white', 'border-warm-900');
+                b.classList.add('border-warm-200', 'text-warm-800');
+            });
+            btn.classList.add('bg-warm-900', 'text-white', 'border-warm-900');
+            btn.classList.remove('border-warm-200', 'text-warm-800');
+            updateEstimate();
+        }
+
+        function setFinish(finish, rate, btn) {
+            currentRate = rate;
+            currentFinish = btn.querySelector('.font-bold').innerText;
+            document.querySelectorAll('.finish-btn').forEach(b => {
+                b.classList.remove('bg-warm-900', 'text-white', 'border-warm-900');
+                b.classList.add('border-warm-200', 'text-warm-800');
+                const sub = b.querySelector('.text-[11px]');
+                if (sub) { sub.classList.remove('text-warm-200'); sub.classList.add('text-stone-500'); }
+            });
+            btn.classList.add('bg-warm-900', 'text-white', 'border-warm-900');
+            btn.classList.remove('border-warm-200', 'text-warm-800');
+            const sub = btn.querySelector('.text-[11px]');
+            if (sub) { sub.classList.add('text-warm-200'); sub.classList.remove('text-stone-500'); }
+            updateEstimate();
+        }
+
+        function sendEstimateWhatsApp() {
+            const price = document.getElementById('est-price').innerText;
+            const text = `🏡 *NEW INTERIOR PROJECT ESTIMATE REQUEST* 🏡%0A%0A` +
+                         `📐 *Configuration:* ${encodeURIComponent(currentConfig)}%0A` +
+                         `✨ *Finish Level:* ${encodeURIComponent(currentFinish)}%0A` +
+                         `💰 *Estimated Budget:* ${encodeURIComponent(price)}%0A%0A` +
+                         `_Hi Team, I calculated this estimate on your website and would like to schedule a 3D Floor Plan consultation._`;
+            window.open(`https://wa.me/${INTERIOR_WHATSAPP}?text=${text}`, '_blank');
+        }
+
+        const modal = document.getElementById('consult-modal');
+        function openConsultationModal() {
+            modal.classList.remove('hidden');
+            setTimeout(() => modal.classList.remove('opacity-0'), 10);
+        }
+        function closeConsultModal() {
+            modal.classList.add('opacity-0');
+            setTimeout(() => modal.classList.add('hidden'), 300);
+        }
+        function handleConsultSubmit(e) {
+            e.preventDefault();
+            const name = document.getElementById('owner-name').value;
+            const prop = document.getElementById('owner-prop').value;
+            const poss = document.getElementById('owner-possession').value;
+            const text = `🏡 *NEW ARCHITECTURAL CONSULTATION* 🏡%0A%0A` +
+                         `👤 *Client:* ${encodeURIComponent(name)}%0A` +
+                         `📍 *Property Details:* ${encodeURIComponent(prop)}%0A` +
+                         `📅 *Possession:* ${encodeURIComponent(poss)}%0A%0A` +
+                         `_Enquiry received from Atelier Noir Web Studio._`;
+            window.open(`https://wa.me/${INTERIOR_WHATSAPP}?text=${text}`, '_blank');
+            closeConsultModal();
+        }
+    </script>
+</body>
+</html>
